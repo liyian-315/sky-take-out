@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface DishMapper {
     /**
@@ -31,7 +33,7 @@ public interface DishMapper {
      * 新增菜品
      * @param dish
      */
-    @AutoFill(OperationType.INSERT)
+    @AutoFill(value = OperationType.INSERT)
     void save(Dish dish);
 
     /**
@@ -39,8 +41,8 @@ public interface DishMapper {
      * @param categoryId
      * @return
      */
-    @Select("select * from dish where category_id=#{categoryId}")
-    Dish getByCategoryId(Long categoryId);
+    @Select("select * from dish where category_id=#{categoryId} and status=1")
+    List<Dish> getByCategoryId(Long categoryId);
 
     @Select("select * from dish where id=#{id}")
     Dish getById(Long id);
@@ -56,6 +58,6 @@ public interface DishMapper {
      * 根据id动态修改菜品数据
      * @param dish
      */
-    @AutoFill(OperationType.UPDATE)
+    @AutoFill(value = OperationType.UPDATE)
     void update(Dish dish);
 }

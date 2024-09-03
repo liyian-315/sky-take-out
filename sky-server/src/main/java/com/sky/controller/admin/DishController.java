@@ -60,11 +60,11 @@ public class DishController {
      */
     @GetMapping("/list")
     @ApiOperation(value = "根据分类id查询菜品")
-    public Result<Dish> getByCategoryId(Long categoryId){
+    public Result<List<Dish>> getByCategoryId(Long categoryId){
         log.info("根据分类id查询菜品");
 
-        Dish dish = dishService.getByCategoryId(categoryId);
-        return Result.success(dish);
+        List<Dish> dishes = dishService.getByCategoryId(categoryId);
+        return Result.success(dishes);
     }
 
     /**
@@ -77,8 +77,8 @@ public class DishController {
     public Result<DishVO> getById(@PathVariable Long id){
         log.info("根据id查询菜品");
 
-        DishVO dishVO = dishService.getByIdWithFlavor(id);
-        return Result.success(dishVO);
+        DishVO dish = dishService.getByIdWithFlavor(id);
+        return Result.success(dish);
     }
 
     /**
