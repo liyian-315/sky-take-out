@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<navigation-bar title="itcast" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view>
+      {{msg}}
+    </view>
+
+    <view>
+      <button bindtap="getUserInfo" type="primary">获取用户信息</button>
+    </view>
+
+    昵称：{{nickName}}
+    <image src="{{url}}" style="width: 432rpx; height: 352rpx; display: block; box-sizing: border-box"></image>
+
+    <view>
+      <button bindtap="wxLogin" type="warn">微信登陆</button>
+      授权码：{{code}}
+    </view>
+
+    <view>
+      <button bindtap="sendRequest" type="default">发送请求</button>
+    </view>
+  </view>
+</scroll-view>
